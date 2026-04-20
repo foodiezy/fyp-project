@@ -39,9 +39,21 @@ export default async function RootLayout({
                       <a href="/consultant" className="text-neutral-500 hover:text-black text-xs font-black uppercase tracking-widest transition-colors">Dashboard</a>
                     )}
                   </nav>
-                  <div className="flex items-center space-x-4">
+                  <div className="flex items-center gap-4">
                     {session ? (
-                      <a href="/api/auth/signout" className="px-6 py-3 bg-black text-white hover:bg-neutral-800 rounded-none text-xs font-black uppercase tracking-widest transition-colors">Sign Out</a>
+                      <>
+                        <div className="hidden sm:flex flex-col items-end">
+                          <span className="text-xs font-black text-black uppercase tracking-widest truncate max-w-[180px]">
+                            {session.user?.name || session.user?.email}
+                          </span>
+                          {(session.user as any)?.organizationName && (
+                            <span className="text-[10px] font-bold text-neutral-400 uppercase tracking-widest truncate max-w-[180px]">
+                              {(session.user as any).organizationName}
+                            </span>
+                          )}
+                        </div>
+                        <a href="/api/auth/signout" className="px-6 py-3 bg-black text-white hover:bg-neutral-800 rounded-none text-xs font-black uppercase tracking-widest transition-colors">Sign Out</a>
+                      </>
                     ) : (
                       <a href="/auth/signin" className="px-6 py-3 bg-black text-white hover:bg-neutral-800 rounded-none text-xs font-black uppercase tracking-widest transition-colors">Sign In</a>
                     )}
