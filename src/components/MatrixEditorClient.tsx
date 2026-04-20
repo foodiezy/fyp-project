@@ -88,30 +88,30 @@ export default function MatrixEditorClient({ initialModel }: { initialModel: any
   }
 
   return (
-    <div className="max-w-5xl mx-auto py-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="max-w-5xl mx-auto py-8">
       
       {/* Details Modal */}
       {isEditingDetails && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl p-8 max-w-lg w-full shadow-2xl animate-in zoom-in-95 duration-200">
-            <h2 className="text-2xl font-bold mb-6 text-slate-800">Edit Model Meta</h2>
-            <div className="space-y-4">
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <div className="bg-black border-2 border-white p-8 max-w-lg w-full">
+            <h2 className="text-3xl font-black mb-8 text-white uppercase tracking-tighter">Edit Meta</h2>
+            <div className="space-y-6">
               <div>
-                <label className="text-sm font-semibold text-slate-600 mb-1 block">Title</label>
-                <input value={detailsForm.name} onChange={e=>setDetailsForm({...detailsForm, name: e.target.value})} className="w-full p-3 border border-slate-200 rounded-xl focus:ring-4 focus:border-indigo-500 focus:ring-indigo-500/20" />
+                <label className="text-xs font-bold text-neutral-400 mb-2 block uppercase tracking-widest">Title</label>
+                <input value={detailsForm.name} onChange={e=>setDetailsForm({...detailsForm, name: e.target.value})} className="w-full p-4 bg-black border-2 border-neutral-800 text-white focus:border-white focus:outline-none transition-colors" />
               </div>
               <div>
-                <label className="text-sm font-semibold text-slate-600 mb-1 block">Version</label>
-                <input value={detailsForm.version} onChange={e=>setDetailsForm({...detailsForm, version: e.target.value})} className="w-full p-3 border border-slate-200 rounded-xl focus:ring-4 focus:border-indigo-500 focus:ring-indigo-500/20" />
+                <label className="text-xs font-bold text-neutral-400 mb-2 block uppercase tracking-widest">Version</label>
+                <input value={detailsForm.version} onChange={e=>setDetailsForm({...detailsForm, version: e.target.value})} className="w-full p-4 bg-black border-2 border-neutral-800 text-white focus:border-white focus:outline-none transition-colors" />
               </div>
               <div>
-                <label className="text-sm font-semibold text-slate-600 mb-1 block">Description</label>
-                <textarea value={detailsForm.description} onChange={e=>setDetailsForm({...detailsForm, description: e.target.value})} className="w-full p-3 border border-slate-200 rounded-xl focus:ring-4 focus:border-indigo-500 focus:ring-indigo-500/20" rows={4} />
+                <label className="text-xs font-bold text-neutral-400 mb-2 block uppercase tracking-widest">Description</label>
+                <textarea value={detailsForm.description} onChange={e=>setDetailsForm({...detailsForm, description: e.target.value})} className="w-full p-4 bg-black border-2 border-neutral-800 text-white focus:border-white focus:outline-none transition-colors resize-none" rows={4} />
               </div>
             </div>
-            <div className="flex gap-3 justify-end mt-8">
-              <button onClick={()=>setIsEditingDetails(false)} className="px-5 py-2.5 text-slate-600 font-semibold hover:bg-slate-100 rounded-xl transition-colors">Cancel</button>
-              <button onClick={handleUpdateDetails} className="px-6 py-2.5 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 shadow-md transition-colors">Save Details</button>
+            <div className="flex gap-4 justify-end mt-8 pt-6 border-t-2 border-neutral-800">
+              <button onClick={()=>setIsEditingDetails(false)} className="px-6 py-3 text-white font-bold border-2 border-neutral-800 hover:border-white uppercase tracking-widest text-sm transition-colors">Cancel</button>
+              <button onClick={handleUpdateDetails} className="px-8 py-3 bg-white text-black font-black uppercase tracking-widest text-sm hover:bg-neutral-200 transition-colors">Save</button>
             </div>
           </div>
         </div>
@@ -119,16 +119,16 @@ export default function MatrixEditorClient({ initialModel }: { initialModel: any
 
       {/* Add Dimension Modal */}
       {isAddingDimension && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl animate-in zoom-in-95 duration-200">
-            <h2 className="text-2xl font-bold mb-6 text-slate-800">New Category / Dimension</h2>
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <div className="bg-black border-2 border-white p-8 max-w-md w-full">
+            <h2 className="text-3xl font-black mb-8 text-white uppercase tracking-tighter">New Category</h2>
             <div>
-              <label className="text-sm font-semibold text-slate-600 mb-1 block">Dimension Name</label>
-              <input value={dimName} onChange={e=>setDimName(e.target.value)} className="w-full p-3 border border-slate-200 rounded-xl focus:ring-4 focus:border-indigo-500 focus:ring-indigo-500/20" placeholder="e.g. Innovation" autoFocus />
+              <label className="text-xs font-bold text-neutral-400 mb-2 block uppercase tracking-widest">Dimension Name</label>
+              <input value={dimName} onChange={e=>setDimName(e.target.value)} className="w-full p-4 bg-black border-2 border-neutral-800 text-white focus:border-white focus:outline-none transition-colors" placeholder="e.g. Innovation" autoFocus />
             </div>
-            <div className="flex gap-3 justify-end mt-8">
-              <button onClick={()=>setIsAddingDimension(false)} className="px-5 py-2.5 text-slate-600 font-semibold hover:bg-slate-100 rounded-xl transition-colors">Cancel</button>
-              <button onClick={handleAddDimension} className="px-6 py-2.5 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 shadow-md transition-colors">Create Category</button>
+            <div className="flex gap-4 justify-end mt-8 pt-6 border-t-2 border-neutral-800">
+              <button onClick={()=>setIsAddingDimension(false)} className="px-6 py-3 text-white font-bold border-2 border-neutral-800 hover:border-white uppercase tracking-widest text-sm transition-colors">Cancel</button>
+              <button onClick={handleAddDimension} className="px-8 py-3 bg-white text-black font-black uppercase tracking-widest text-sm hover:bg-neutral-200 transition-colors">Create</button>
             </div>
           </div>
         </div>
@@ -136,16 +136,16 @@ export default function MatrixEditorClient({ initialModel }: { initialModel: any
 
       {/* Edit Dimension Modal */}
       {editingDimension && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl animate-in zoom-in-95 duration-200">
-            <h2 className="text-2xl font-bold mb-6 text-slate-800">Rename Category</h2>
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <div className="bg-black border-2 border-white p-8 max-w-md w-full">
+            <h2 className="text-3xl font-black mb-8 text-white uppercase tracking-tighter">Rename Category</h2>
             <div>
-              <label className="text-sm font-semibold text-slate-600 mb-1 block">New Dimension Name</label>
-              <input value={editingDimension.name} onChange={e=>setEditingDimension({...editingDimension, name: e.target.value})} className="w-full p-3 border border-slate-200 rounded-xl focus:ring-4 focus:border-indigo-500 focus:ring-indigo-500/20" autoFocus />
+              <label className="text-xs font-bold text-neutral-400 mb-2 block uppercase tracking-widest">New Dimension Name</label>
+              <input value={editingDimension.name} onChange={e=>setEditingDimension({...editingDimension, name: e.target.value})} className="w-full p-4 bg-black border-2 border-neutral-800 text-white focus:border-white focus:outline-none transition-colors" autoFocus />
             </div>
-            <div className="flex gap-3 justify-end mt-8">
-              <button onClick={()=>setEditingDimension(null)} className="px-5 py-2.5 text-slate-600 font-semibold hover:bg-slate-100 rounded-xl transition-colors">Cancel</button>
-              <button onClick={handleUpdateDimension} className="px-6 py-2.5 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 shadow-md transition-colors">Save</button>
+            <div className="flex gap-4 justify-end mt-8 pt-6 border-t-2 border-neutral-800">
+              <button onClick={()=>setEditingDimension(null)} className="px-6 py-3 text-white font-bold border-2 border-neutral-800 hover:border-white uppercase tracking-widest text-sm transition-colors">Cancel</button>
+              <button onClick={handleUpdateDimension} className="px-8 py-3 bg-white text-black font-black uppercase tracking-widest text-sm hover:bg-neutral-200 transition-colors">Save</button>
             </div>
           </div>
         </div>
@@ -153,103 +153,92 @@ export default function MatrixEditorClient({ initialModel }: { initialModel: any
 
       {/* Edit Level Modal */}
       {editingLevel && (
-        <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-3xl p-8 max-w-lg w-full shadow-2xl animate-in zoom-in-95 duration-200">
-            <h2 className="text-2xl font-bold mb-6 text-slate-800">Edit Maturity Level {editingLevel.level}</h2>
-            <div className="space-y-4">
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <div className="bg-black border-2 border-white p-8 max-w-lg w-full">
+            <h2 className="text-3xl font-black mb-8 text-white uppercase tracking-tighter">Edit Level {editingLevel.level}</h2>
+            <div className="space-y-6">
               <div>
-                <label className="text-sm font-semibold text-slate-600 mb-1 block">Level Title</label>
-                <input value={editingLevel.name} onChange={e=>setEditingLevel({...editingLevel, name: e.target.value})} className="w-full p-3 border border-slate-200 rounded-xl focus:ring-4 focus:border-indigo-500 focus:ring-indigo-500/20" />
+                <label className="text-xs font-bold text-neutral-400 mb-2 block uppercase tracking-widest">Level Title</label>
+                <input value={editingLevel.name} onChange={e=>setEditingLevel({...editingLevel, name: e.target.value})} className="w-full p-4 bg-black border-2 border-neutral-800 text-white focus:border-white focus:outline-none transition-colors" />
               </div>
               <div>
-                <label className="text-sm font-semibold text-slate-600 mb-1 block">Detailed Description / Criteria</label>
-                <textarea value={editingLevel.description} onChange={e=>setEditingLevel({...editingLevel, description: e.target.value})} className="w-full p-3 border border-slate-200 rounded-xl focus:ring-4 focus:border-indigo-500 focus:ring-indigo-500/20" rows={5} />
+                <label className="text-xs font-bold text-neutral-400 mb-2 block uppercase tracking-widest">Detailed Criteria</label>
+                <textarea value={editingLevel.description} onChange={e=>setEditingLevel({...editingLevel, description: e.target.value})} className="w-full p-4 bg-black border-2 border-neutral-800 text-white focus:border-white focus:outline-none transition-colors resize-none" rows={5} />
               </div>
             </div>
-            <div className="flex gap-3 justify-end mt-8">
-              <button onClick={()=>setEditingLevel(null)} className="px-5 py-2.5 text-slate-600 font-semibold hover:bg-slate-100 rounded-xl transition-colors">Cancel</button>
-              <button onClick={handleUpdateLevel} className="px-6 py-2.5 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 shadow-md transition-colors">Save Update</button>
+            <div className="flex gap-4 justify-end mt-8 pt-6 border-t-2 border-neutral-800">
+              <button onClick={()=>setEditingLevel(null)} className="px-6 py-3 text-white font-bold border-2 border-neutral-800 hover:border-white uppercase tracking-widest text-sm transition-colors">Cancel</button>
+              <button onClick={handleUpdateLevel} className="px-8 py-3 bg-white text-black font-black uppercase tracking-widest text-sm hover:bg-neutral-200 transition-colors">Save Update</button>
             </div>
           </div>
         </div>
       )}
 
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-8 gap-4">
+      <div className="flex flex-col md:flex-row md:justify-between md:items-end mb-12 gap-6 pb-8 border-b-2 border-neutral-800">
         <div>
-          <a href="/consultant" className="text-sm font-semibold text-primary-600 hover:text-primary-800 mb-3 inline-flex items-center gap-1 transition-colors">
+          <a href="/consultant" className="text-sm font-bold text-neutral-400 hover:text-white mb-4 inline-block uppercase tracking-widest transition-colors">
             &larr; Back to Dashboard
           </a>
-          <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">{model.name}</h1>
-          <p className="mt-2 text-lg text-slate-600 font-medium">{model.description} (v{model.version})</p>
+          <h1 className="text-5xl font-black text-white tracking-tighter uppercase">{model.name}</h1>
+          <p className="mt-3 text-xl text-neutral-400 font-bold">{model.description} <span className="inline-block px-2 border-2 border-neutral-700 text-sm ml-2">v{model.version}</span></p>
         </div>
-        <div className="flex gap-3">
-          <button onClick={()=>setIsEditingDetails(true)} className="px-5 py-2.5 border-2 border-slate-200 text-slate-700 bg-white rounded-xl font-bold hover:bg-slate-50 hover:border-slate-300 shadow-sm transition-all focus:ring-4 focus:ring-slate-100">
-            Edit Details
+        <div className="flex gap-4">
+          <button onClick={()=>setIsEditingDetails(true)} className="px-6 py-3 border-2 border-neutral-800 text-white bg-black font-bold hover:border-white uppercase tracking-widest text-sm transition-colors">
+            Edit Meta
           </button>
-          <button onClick={()=>setIsAddingDimension(true)} className="px-5 py-2.5 bg-primary-600 text-white rounded-xl font-bold shadow-lg shadow-primary-600/30 hover:bg-primary-700 hover:-translate-y-0.5 transition-all focus:ring-4 focus:ring-primary-500/20">
-            + Add Dimension
+          <button onClick={()=>setIsAddingDimension(true)} className="px-6 py-3 bg-white text-black font-black hover:bg-neutral-200 uppercase tracking-widest text-sm transition-colors">
+            + Dimension
           </button>
         </div>
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y-12">
         {model.dimensions.map((dim: any) => (
-          <div key={dim.id} className="bg-white rounded-3xl shadow-xl shadow-slate-200/40 border border-slate-200 overflow-hidden">
-            <div className="p-6 border-b border-slate-100 bg-slate-50/80 flex justify-between items-center">
-              <h2 className="text-2xl font-bold text-slate-800">{dim.name}</h2>
-              <button onClick={()=>setEditingDimension({id: dim.id, name: dim.name})} className="text-sm font-bold text-indigo-700 hover:bg-indigo-100 border border-indigo-200 bg-indigo-50 px-4 py-2 rounded-lg shadow-sm transition-colors">
-                Rename Category
+          <div key={dim.id} className="bg-black border-2 border-neutral-800 group relative">
+            <div className="p-8 border-b-2 border-neutral-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+              <h2 className="text-3xl font-black text-white uppercase tracking-tighter">{dim.name}</h2>
+              <button onClick={()=>setEditingDimension({id: dim.id, name: dim.name})} className="text-sm font-bold text-white border-2 border-neutral-800 hover:border-white bg-black px-6 py-3 uppercase tracking-widest transition-colors">
+                Rename
               </button>
             </div>
             
-            <div className="p-6 sm:p-8">
-              <div className="flex items-center justify-between mb-5">
-                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-widest">Question Bank</h3>
-                <button onClick={() => handleAddQuestion(dim.id)} className="text-sm font-bold text-primary-600 hover:bg-primary-50 px-3 py-1.5 rounded-md hover:underline flex items-center gap-1 cursor-pointer transition-colors">
+            <div className="p-8">
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-xs font-bold text-neutral-500 uppercase tracking-widest">Question Bank</h3>
+                <button onClick={() => handleAddQuestion(dim.id)} className="text-xs font-black text-black bg-white px-4 py-2 uppercase tracking-widest hover:bg-neutral-200 transition-colors">
                   + Add Question
                 </button>
               </div>
-              <ul className="space-y-3 mb-10">
+              <ul className="space-y-4 mb-12">
                 {dim.questions.map((q: any) => (
-                  <li key={q.id} className="text-base text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-100 flex justify-between group hover:border-indigo-200 transition-colors shadow-sm">
-                    <span className="font-medium pr-4">{q.text}</span>
-                    <button onClick={() => handleDeleteQuestion(q.id)} className="text-sm text-slate-400 font-bold hover:text-red-600 opacity-0 md:opacity-100 transition-opacity">Remove</button>
+                  <li key={q.id} className="text-base text-neutral-300 bg-neutral-900 p-5 border border-neutral-800 flex justify-between items-center group/item hover:border-neutral-600 transition-colors">
+                    <span className="font-bold">{q.text}</span>
+                    <button onClick={() => handleDeleteQuestion(q.id)} className="text-sm text-neutral-500 font-bold hover:text-white uppercase tracking-widest opacity-0 group-hover/item:opacity-100 transition-all">Remove</button>
                   </li>
                 ))}
-                {dim.questions.length === 0 && <li className="text-sm text-slate-400 font-medium italic bg-slate-50 p-4 rounded-xl border border-slate-100 text-center shadow-sm">No criteria mapped yet.</li>}
+                {dim.questions.length === 0 && <li className="text-sm text-neutral-500 font-bold uppercase tracking-widest italic bg-black p-6 border-2 border-dashed border-neutral-800 text-center">No criteria mapped yet.</li>}
               </ul>
 
-              <div className="flex items-center justify-between mb-5">
-                <h3 className="text-sm font-bold text-slate-500 uppercase tracking-widest">Maturity Scale Matrix</h3>
+              <div className="flex items-center justify-between mb-8">
+                <h3 className="text-xs font-bold text-neutral-500 uppercase tracking-widest">Scale Matrix</h3>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-5 gap-3">
-                {dim.levelDescriptions.sort((a:any,b:any)=>a.level - b.level).map((lvl:any) => {
-                  const cardBg = lvl.level === 1 ? 'border-red-200 bg-red-50 hover:border-red-400 text-red-950' :
-                                 lvl.level === 2 ? 'border-orange-200 bg-orange-50 hover:border-orange-400 text-orange-950' :
-                                 lvl.level === 3 ? 'border-amber-200 bg-amber-50 hover:border-amber-400 text-amber-950' :
-                                 lvl.level === 4 ? 'border-blue-200 bg-blue-50 hover:border-blue-400 text-blue-950' :
-                                                   'border-emerald-200 bg-emerald-50 hover:border-emerald-400 text-emerald-950'
-                  const badgeBg = lvl.level === 1 ? 'bg-red-200 text-red-900' :
-                                  lvl.level === 2 ? 'bg-orange-200 text-orange-900' :
-                                  lvl.level === 3 ? 'bg-amber-200 text-amber-900' :
-                                  lvl.level === 4 ? 'bg-blue-200 text-blue-900' :
-                                                    'bg-emerald-200 text-emerald-900'
-                  return (
-                  <div key={lvl.id} onClick={() => setEditingLevel({id: lvl.id, level: lvl.level, name: lvl.name, description: lvl.description})} className={`p-5 rounded-2xl flex flex-col items-center text-center shadow-sm hover:shadow-md hover:-translate-y-1 transition-all cursor-pointer border-2 ${cardBg}`}>
-                    <span className={`text-xs font-black mb-2 px-2.5 py-1 rounded-md ${badgeBg}`}>LEVEL {lvl.level}</span>
-                    <strong className="font-extrabold mb-3 text-lg leading-tight">{lvl.name}</strong>
-                    <span className="text-sm font-medium opacity-80">{lvl.description}</span>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                {dim.levelDescriptions.sort((a:any,b:any)=>a.level - b.level).map((lvl:any) => (
+                  <div key={lvl.id} onClick={() => setEditingLevel({id: lvl.id, level: lvl.level, name: lvl.name, description: lvl.description})} className="p-6 border-2 border-neutral-800 bg-black hover:border-white transition-colors cursor-pointer flex flex-col items-start">
+                    <span className="text-xs font-black mb-4 px-3 py-1 bg-white text-black uppercase tracking-widest">Lvl {lvl.level}</span>
+                    <strong className="font-black mb-3 text-xl leading-tight text-white uppercase tracking-tighter">{lvl.name}</strong>
+                    <span className="text-sm font-medium text-neutral-400">{lvl.description}</span>
                   </div>
-                )})}
+                ))}
               </div>
             </div>
           </div>
         ))}
         {model.dimensions.length === 0 && (
-          <div className="text-center py-20 bg-white rounded-3xl border-2 border-dashed border-slate-200 shadow-sm">
-            <h3 className="text-2xl font-extrabold text-slate-800">Matrix is Empty</h3>
-            <p className="text-slate-500 mt-2 font-medium max-w-md mx-auto text-lg">Initialize your matrix by adding a dimension parameter.</p>
+          <div className="text-center py-24 bg-black border-2 border-neutral-800">
+            <h3 className="text-3xl font-black text-white uppercase tracking-tighter">Matrix is Empty</h3>
+            <p className="text-neutral-500 mt-3 font-bold uppercase tracking-widest text-sm">Initialize your matrix by adding a dimension parameter.</p>
           </div>
         )}
       </div>

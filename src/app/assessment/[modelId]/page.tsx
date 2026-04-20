@@ -23,12 +23,12 @@ export default async function TakeAssessment({ params }: { params: { modelId: st
 
   return (
     <div className="max-w-4xl mx-auto py-8">
-      <div className="mb-8 p-6 bg-gradient-to-r from-indigo-50 to-primary-50 border border-indigo-100 rounded-2xl">
-        <h1 className="text-3xl font-extrabold text-indigo-950">{model.name}</h1>
-        <p className="mt-2 text-indigo-800 font-medium">{model.description}</p>
+      <div className="mb-8 p-8 border-2 border-black bg-black text-white">
+        <h1 className="text-4xl font-black uppercase tracking-tighter">{model.name}</h1>
+        <p className="mt-3 font-bold uppercase tracking-widest text-xs text-neutral-400">{model.description}</p>
       </div>
 
-      <div className="bg-white rounded-3xl shadow-xl shadow-slate-200/50 border border-slate-200 p-6 sm:p-10">
+      <div className="bg-white border-2 border-black p-6 sm:p-10">
         <AssessmentWizard model={model} />
       </div>
     </div>

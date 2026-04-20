@@ -12,8 +12,6 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: { 
   
   const user = session.user as any
   
-
-
   let orgId = searchParams.orgId || user.organizationId
 
   // If consultant has no linked org, pick the first one for MVP testing purposes
@@ -22,7 +20,7 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: { 
     if (firstOrg) orgId = firstOrg.id
   }
 
-  if (!orgId) return <div className="p-10 text-center text-slate-500">No Organization Found for analytics.</div>
+  if (!orgId) return <div className="p-10 text-center font-black uppercase tracking-widest border-2 border-black m-8">No Organization Found for analytics.</div>
 
   const org = await prisma.organization.findUnique({ where: { id: orgId } })
 
@@ -56,19 +54,15 @@ export default async function AnalyticsPage({ searchParams }: { searchParams: { 
   }))
 
   return (
-    <div className="max-w-7xl mx-auto animate-in fade-in slide-in-from-bottom-4 duration-700">
-      <div className="bg-indigo-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl shadow-indigo-900/20 relative overflow-hidden">
-        {/* Dynamic decorative circles */}
-        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-white/10 blur-3xl mix-blend-overlay"></div>
-        <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-indigo-500/30 blur-3xl mix-blend-overlay"></div>
-
+    <div className="max-w-7xl mx-auto">
+      <div className="bg-black border-2 border-black p-8 sm:p-12 text-white">
         <div className="relative z-10">
-          <span className="inline-block px-3 py-1 bg-indigo-500/30 border border-indigo-400/30 text-indigo-100 rounded-full text-xs font-bold tracking-widest uppercase mb-4">
+          <span className="inline-block px-4 py-2 bg-white text-black font-black tracking-widest uppercase text-xs mb-6">
             Demographic Insights
           </span>
-          <h1 className="text-4xl sm:text-5xl font-black tracking-tight mb-4">Analytics Dashboard</h1>
-          <p className="text-lg text-indigo-200 max-w-2xl font-medium leading-relaxed">
-            Real-time maturity reporting for <strong className="text-white bg-white/10 px-2 py-0.5 rounded ml-1">{org?.name}</strong>. Compare findings across seniority levels and identify perception gaps.
+          <h1 className="text-4xl sm:text-6xl font-black tracking-tighter mb-4 uppercase">Analytics Dashboard</h1>
+          <p className="text-sm font-bold uppercase tracking-widest text-neutral-400 max-w-2xl leading-relaxed">
+            Real-time maturity reporting for <strong className="text-white underline underline-offset-4 decoration-2 mx-1">{org?.name}</strong>. Compare findings across seniority levels and identify perception gaps.
           </p>
         </div>
       </div>

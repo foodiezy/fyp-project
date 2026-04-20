@@ -43,7 +43,7 @@ export default function AssessmentWizard({ model }: { model: any }) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           modelId: model.id,
-          answers, // { [questionId]: score }
+          answers,
           jobLevel,
           department
         })
@@ -58,16 +58,16 @@ export default function AssessmentWizard({ model }: { model: any }) {
 
   if (isDone) {
     return (
-      <div className="text-center py-20 animate-in zoom-in duration-500">
-        <div className="w-24 h-24 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-iner shadow-green-200">
+      <div className="text-center py-20 bg-black text-white min-h-[70vh] flex flex-col items-center justify-center border border-neutral-800">
+        <div className="w-24 h-24 bg-white text-black rounded-full flex items-center justify-center mx-auto mb-8">
           <svg className="w-12 h-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+            <path strokeLinecap="square" strokeLinejoin="miter" strokeWidth={3} d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h2 className="text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Assessment Completed!</h2>
-        <p className="text-xl text-slate-600 max-w-lg mx-auto">Your responses have been successfully recorded. The consultant will review your comprehensive maturity score!</p>
+        <h2 className="text-5xl font-black mb-4 tracking-tighter">Assessment Completed</h2>
+        <p className="text-xl text-neutral-400 max-w-lg mx-auto font-medium">Your responses have been successfully recorded. The consultant will review your comprehensive maturity score.</p>
         <div className="mt-12">
-          <a href="/assessment" className="px-8 py-4 rounded-xl bg-slate-900 text-white font-semibold hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/20">
+          <a href="/assessment" className="px-10 py-5 border-2 border-white text-white font-bold hover:bg-white hover:text-black transition-colors inline-block uppercase tracking-widest text-sm">
             Return to Dashboard
           </a>
         </div>
@@ -80,17 +80,17 @@ export default function AssessmentWizard({ model }: { model: any }) {
 
   if (showDemographics) {
     return (
-      <div className="space-y-8 animate-in fade-in slide-in-from-right-8 duration-500 max-w-2xl mx-auto">
-        <div className="text-center space-y-4 mb-8">
-          <h2 className="text-3xl font-extrabold text-slate-900">Before we begin</h2>
-          <p className="text-lg text-slate-500">Please provide your role details so we can accurately segment the maturity findings.</p>
+      <div className="max-w-2xl mx-auto space-y-12">
+        <div className="text-center space-y-4">
+          <h2 className="text-4xl font-black text-white tracking-tighter uppercase">Before we begin</h2>
+          <p className="text-lg text-neutral-400 font-medium">Please provide your role details so we can accurately segment the maturity findings.</p>
         </div>
         
-        <div className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
-          <div className="space-y-3">
-            <label className="block text-sm font-bold text-slate-700">What is your Job Level?</label>
+        <div className="bg-black p-8 md:p-12 border-2 border-neutral-800 space-y-8">
+          <div className="space-y-4">
+            <label className="block text-sm font-bold text-neutral-400 uppercase tracking-widest">What is your Job Level?</label>
             <select 
-              className="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-medium text-slate-700"
+              className="w-full p-4 bg-black border-2 border-neutral-700 focus:border-white focus:outline-none transition-colors font-bold text-white appearance-none rounded-none"
               value={jobLevel}
               onChange={(e) => setJobLevel(e.target.value)}
             >
@@ -101,10 +101,10 @@ export default function AssessmentWizard({ model }: { model: any }) {
             </select>
           </div>
 
-          <div className="space-y-3">
-            <label className="block text-sm font-bold text-slate-700">What is your Department?</label>
+          <div className="space-y-4">
+            <label className="block text-sm font-bold text-neutral-400 uppercase tracking-widest">What is your Department?</label>
             <select 
-              className="w-full p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all font-medium text-slate-700"
+              className="w-full p-4 bg-black border-2 border-neutral-700 focus:border-white focus:outline-none transition-colors font-bold text-white appearance-none rounded-none"
               value={department}
               onChange={(e) => setDepartment(e.target.value)}
             >
@@ -119,11 +119,11 @@ export default function AssessmentWizard({ model }: { model: any }) {
             </select>
           </div>
 
-          <div className="pt-6 border-t border-slate-100">
+          <div className="pt-8">
             <button
               onClick={() => setShowDemographics(false)}
               disabled={!jobLevel || !department}
-              className="w-full py-4 bg-indigo-600 text-white font-bold rounded-xl shadow-lg shadow-indigo-600/30 hover:bg-indigo-700 disabled:opacity-50 disabled:hover:bg-indigo-600 transition-all"
+              className="w-full py-5 bg-white text-black font-black uppercase tracking-widest text-sm disabled:opacity-30 hover:bg-neutral-200 transition-colors"
             >
               Start Assessment
             </button>
@@ -134,59 +134,43 @@ export default function AssessmentWizard({ model }: { model: any }) {
   }
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-right-8 duration-500 ease-out fill-mode-both" key={dimension.id}>
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-slate-100 pb-5 gap-4">
+    <div className="space-y-12 max-w-5xl mx-auto" key={dimension.id}>
+      <div className="flex flex-col md:flex-row md:items-end justify-between border-b-2 border-neutral-800 pb-8 gap-6">
         <div>
-          <span className="text-xs font-bold tracking-widest text-primary-500 uppercase bg-primary-50 px-2 py-1 rounded">
+          <span className="text-sm font-bold tracking-widest text-neutral-500 uppercase">
             Part {currentDimIdx + 1} of {model.dimensions.length}
           </span>
-          <h2 className="text-3xl font-extrabold text-slate-800 mt-2">{dimension.name} Benchmarking</h2>
+          <h2 className="text-4xl lg:text-5xl font-black text-white mt-2 tracking-tighter uppercase">{dimension.name}</h2>
         </div>
-        <div className="text-sm font-semibold text-slate-500 bg-slate-50 border border-slate-200 px-4 py-2 rounded-xl whitespace-nowrap">
+        <div className="text-sm font-bold text-black bg-white px-5 py-2.5 uppercase tracking-widest">
           {dimension.questions.length} Metrics
         </div>
       </div>
 
-      <div className="space-y-8">
+      <div className="space-y-12">
         {dimension.questions.map((q: any, i: number) => (
-          <div key={q.id} className="p-6 bg-slate-50 border border-slate-200 rounded-2xl hover:border-primary-300 transition-colors shadow-sm">
-            <p className="text-[1.1rem] font-semibold text-slate-800 mb-6 flex gap-3 leading-relaxed">
-              <span className="text-primary-500 bg-primary-50 w-8 h-8 flex-shrink-0 flex justify-center items-center rounded-lg">{i+1}</span>
+          <div key={q.id} className="p-8 md:p-10 bg-black border-2 border-neutral-800 hover:border-neutral-600 transition-colors">
+            <p className="text-xl md:text-2xl font-bold text-white mb-8 flex gap-6 leading-relaxed">
+              <span className="text-black bg-white w-10 h-10 flex-shrink-0 flex justify-center items-center font-black">{i+1}</span>
               <span className="mt-1">{q.text}</span>
             </p>
-            <div className="flex flex-wrap grid-cols-2 md:grid-cols-5 gap-3 mt-4">
+            <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mt-8">
               {[1, 2, 3, 4, 5].map(score => {
                 const isSelected = answers[q.id] === score;
                 const desc = dimension.levelDescriptions.find((l:any) => l.level === score)?.name || `Level ${score}`
                 
-                const cardBg = score === 1 ? 'border-red-200 bg-red-50 text-red-900 border-2' :
-                               score === 2 ? 'border-orange-200 bg-orange-50 text-orange-900 border-2' :
-                               score === 3 ? 'border-amber-200 bg-amber-50 text-amber-900 border-2' :
-                               score === 4 ? 'border-blue-200 bg-blue-50 text-blue-900 border-2' :
-                                             'border-emerald-200 bg-emerald-50 text-emerald-900 border-2'
-                const hoverBg = score === 1 ? 'hover:bg-red-50 hover:border-red-300' :
-                                score === 2 ? 'hover:bg-orange-50 hover:border-orange-300' :
-                                score === 3 ? 'hover:bg-amber-50 hover:border-amber-300' :
-                                score === 4 ? 'hover:bg-blue-50 hover:border-blue-300' :
-                                              'hover:bg-emerald-50 hover:border-emerald-300'
-                const badgeColor = score === 1 ? 'text-red-600' :
-                                   score === 2 ? 'text-orange-600' :
-                                   score === 3 ? 'text-amber-600' :
-                                   score === 4 ? 'text-blue-600' :
-                                                 'text-emerald-600'
-
                 return (
                   <button
                     key={score}
                     onClick={() => handleScore(q.id, score)}
-                    className={`flex-1 min-w-[140px] py-4 px-4 rounded-xl transition-all font-semibold shadow-sm focus:outline-none focus:ring-4 focus:ring-indigo-500/20 ${
+                    className={`flex-1 py-6 px-4 transition-colors font-bold border-2 focus:outline-none ${
                       isSelected 
-                        ? `${cardBg} scale-[1.02] shadow-md z-10 relative` 
-                        : `border-2 border-slate-200 bg-white text-slate-600 ${hoverBg}`
+                        ? 'border-white bg-white text-black' 
+                        : 'border-neutral-800 bg-black text-neutral-400 hover:border-neutral-500 hover:text-white'
                     }`}
                   >
-                    <div className={`text-2xl font-black mb-1.5 ${isSelected ? badgeColor : 'text-slate-400'}`}>{score}</div>
-                    <div className="text-xs font-bold uppercase tracking-wider opacity-90">{desc}</div>
+                    <div className="text-3xl font-black mb-2">{score}</div>
+                    <div className="text-xs uppercase tracking-widest opacity-90">{desc}</div>
                   </button>
                 )
               })}
@@ -195,30 +179,30 @@ export default function AssessmentWizard({ model }: { model: any }) {
         ))}
       </div>
 
-      <div className="pt-8 border-t border-slate-200 flex flex-col-reverse sm:flex-row justify-between gap-4">
+      <div className="pt-12 border-t-2 border-neutral-800 flex flex-col-reverse sm:flex-row justify-between gap-6">
         <button
           onClick={handlePrev}
           disabled={currentDimIdx === 0}
-          className="w-full sm:w-auto px-8 py-4 font-bold text-slate-600 border border-slate-200 bg-white disabled:opacity-40 hover:bg-slate-50 rounded-xl transition-all shadow-sm"
+          className="w-full sm:w-auto px-10 py-5 font-bold uppercase tracking-widest text-sm border-2 border-neutral-800 text-neutral-400 bg-black disabled:opacity-30 hover:border-white hover:text-white transition-colors"
         >
-          Previous Section
+          Previous
         </button>
         
         {isLast ? (
           <button
             onClick={handleSubmit}
             disabled={!allAnswered || isSubmitting}
-            className="w-full sm:w-auto px-10 py-4 font-bold text-white bg-green-600 hover:bg-green-700 disabled:opacity-50 disabled:hover:translate-y-0 rounded-xl shadow-xl shadow-green-600/30 hover:-translate-y-1 transition-all"
+            className="w-full sm:w-auto px-12 py-5 font-black uppercase tracking-widest text-sm text-black bg-white disabled:opacity-30 hover:bg-neutral-200 transition-colors"
           >
-            {isSubmitting ? 'Submitting...' : 'Complete & Submit'}
+            {isSubmitting ? 'Submitting...' : 'Submit'}
           </button>
         ) : (
           <button
             onClick={handleNext}
             disabled={!allAnswered}
-            className="w-full sm:w-auto px-10 py-4 font-bold text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:hover:translate-y-0 rounded-xl shadow-xl shadow-indigo-600/30 hover:-translate-y-1 transition-all"
+            className="w-full sm:w-auto px-12 py-5 font-black uppercase tracking-widest text-sm text-black bg-white disabled:opacity-30 hover:bg-neutral-200 transition-colors"
           >
-            Next Section
+            Next
           </button>
         )}
       </div>

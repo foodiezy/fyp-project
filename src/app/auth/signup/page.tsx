@@ -2,6 +2,8 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import Link from "next/link"
+import { Authentication } from "undraw-react"
 
 export default function SignUp() {
   const router = useRouter()
@@ -35,59 +37,58 @@ export default function SignUp() {
   }
 
   return (
-    <div className="min-h-[85vh] flex items-center justify-center -mx-4 py-12">
-      <div className="bg-white p-8 sm:p-12 rounded-[2.5rem] shadow-2xl w-full max-w-lg border border-slate-100 animate-in zoom-in-95 duration-500">
-        <div className="w-16 h-16 bg-emerald-600 rounded-3xl mb-8 flex items-center justify-center text-white shadow-lg shadow-emerald-200">
-          <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
-          </svg>
-        </div>
-        <h1 className="text-3xl font-extrabold text-slate-900 mb-2 tracking-tight">Create your tracker</h1>
-        <p className="text-slate-500 font-medium mb-8">Register your Organisation for AIMM tracking guidance.</p>
-        
-        {error && <div className="bg-red-50 text-red-600 p-4 rounded-xl mb-6 font-bold text-sm border border-red-100">{error}</div>}
+    <div className="min-h-[80vh] flex flex-col lg:flex-row items-center justify-center gap-16 -mx-4 py-12">
+      <div className="hidden lg:flex flex-1 w-full max-w-md justify-center grayscale contrast-200">
+        <Authentication color="#000000" style={{ height: '300px' }} />
+      </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="bg-white p-8 sm:p-12 w-full max-w-md border-2 border-black flex-1">
+        <h1 className="text-4xl font-black text-black mb-2 tracking-tighter uppercase">Register</h1>
+        <p className="text-neutral-500 font-bold uppercase tracking-widest text-xs mb-8">Register your Organisation for tracking guidance.</p>
+        
+        {error && <div className="bg-black text-white p-4 mb-6 font-black uppercase tracking-widest text-xs">{error}</div>}
+
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Organisation Name</label>
+            <label className="block text-xs font-black text-neutral-500 mb-2 uppercase tracking-widest">Organisation Name</label>
             <input 
               type="text" 
               value={form.organizationName}
               onChange={e => setForm({...form, organizationName: e.target.value})}
-              className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all font-medium text-slate-900"
+              className="w-full px-5 py-4 bg-white border-2 border-neutral-300 text-black focus:border-black outline-none rounded-none transition-colors"
               placeholder="e.g. Acme Corp"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Contact Person / Rep</label>
+            <label className="block text-xs font-black text-neutral-500 mb-2 uppercase tracking-widest">Contact Person</label>
             <input 
               type="text" 
               value={form.name}
               onChange={e => setForm({...form, name: e.target.value})}
-              className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all font-medium text-slate-900"
+              className="w-full px-5 py-4 bg-white border-2 border-neutral-300 text-black focus:border-black outline-none rounded-none transition-colors"
               placeholder="John Doe"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Email Address</label>
+            <label className="block text-xs font-black text-neutral-500 mb-2 uppercase tracking-widest">Email Address</label>
             <input 
               type="email" 
               value={form.email}
               onChange={e => setForm({...form, email: e.target.value})}
-              className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all font-medium text-slate-900"
+              className="w-full px-5 py-4 bg-white border-2 border-neutral-300 text-black focus:border-black outline-none rounded-none transition-colors"
               placeholder="john@acme.com"
               required
             />
           </div>
           <div>
-            <label className="block text-sm font-bold text-slate-700 mb-2 uppercase tracking-wide">Secure Password</label>
+            <label className="block text-xs font-black text-neutral-500 mb-2 uppercase tracking-widest">Password</label>
             <input 
               type="password" 
               value={form.password}
               onChange={e => setForm({...form, password: e.target.value})}
-              className="w-full px-5 py-3.5 bg-slate-50 border border-slate-200 rounded-xl focus:ring-4 focus:ring-emerald-500/20 focus:border-emerald-500 transition-all font-medium text-slate-900"
+              className="w-full px-5 py-4 bg-white border-2 border-neutral-300 text-black focus:border-black outline-none rounded-none transition-colors"
               placeholder="••••••••"
               required
               minLength={6}
@@ -97,18 +98,18 @@ export default function SignUp() {
             <button 
               type="submit" 
               disabled={isLoading}
-              className="w-full bg-emerald-600 text-white font-bold py-4 rounded-xl shadow-xl shadow-emerald-600/30 hover:bg-emerald-700 disabled:opacity-50 disabled:hover:translate-y-0 transition-all hover:-translate-y-0.5 text-lg tracking-wide"
+              className="w-full bg-black text-white font-black py-5 uppercase tracking-widest text-sm hover:bg-neutral-800 disabled:opacity-50 transition-colors"
             >
-              {isLoading ? 'Encrypting & Saving...' : 'Register Organisation'}
+              {isLoading ? 'Registering...' : 'Register Organisation'}
             </button>
           </div>
         </form>
 
-        <div className="mt-8 text-center text-sm font-medium text-slate-500">
-          Already part of the AIMM network?{' '}
-          <a href="/auth/signin" className="text-emerald-600 hover:text-emerald-700 font-bold hover:underline">
-            Sign In here
-          </a>
+        <div className="mt-8 text-center text-xs font-bold uppercase tracking-widest text-neutral-500">
+          Already part of the network?{' '}
+          <Link href="/auth/signin" className="text-black hover:underline underline-offset-4 decoration-2">
+            Sign In
+          </Link>
         </div>
       </div>
     </div>
