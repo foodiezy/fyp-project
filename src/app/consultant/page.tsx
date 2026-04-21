@@ -27,6 +27,9 @@ export default async function ConsultantDashboard() {
             <Link href="/consultant/analytics" className="px-8 py-4 border-2 border-black text-black font-black uppercase tracking-widest text-sm hover:bg-black hover:text-white transition-colors">
               View Analytics
             </Link>
+            <Link href="/consultant/risks" className="px-8 py-4 border-2 border-black text-black font-black uppercase tracking-widest text-sm hover:bg-black hover:text-white transition-colors">
+              Risk Register
+            </Link>
             <NewModelButton />
           </div>
         </div>
